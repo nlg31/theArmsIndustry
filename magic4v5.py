@@ -62,12 +62,11 @@ def magic4(x):
 			magic4(n)
 			
 
+x='NULL'
+while(x!="exit"):		
+	x = input('\nenter a number to play 4 is the magic number or type "exit" to quit \n')		
+	magic4(x)
 
-		
-x = input('enter a number to play 4 is the magic number or type "exit" to quit \n')		
-magic4(x)
 	
-	
-
 
 
