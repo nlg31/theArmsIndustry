@@ -9,33 +9,76 @@ def magic4(x):
 	if(int(n)==0):
 		#print(n,'is',4,'and')
 		n=4
-	
-	elif int(n)==4:
+	if int(n)==4:
 		print ('4 is the magic number')	
 		return 0
-		
-	elif (len(n)<4):
-		n=str('0'*(4-len(n)))+n
+	if(len(n)<3):
+		n=str('0'*(3-len(n)))+n
 		#print(n)
-			
+		
 	if(int(n)!=4):			
-		while(len(n)>=4):
-			if (int(n[len(n)-2:len(n)])>0) and (int(n[len(n)-2:len(n)])<20):
-				x+=int(m1[int(n[len(n)-2:len(n)])]+m3[len(n)-2])
-				#print(x, '1')
-			if (int(n[len(n)-2:len(n)])>=20):
-				x+=int(m2[int(n[len(n)-2])] +m1[int(n[len(n)-1])] +m3[len(n)-2])
-				#print(x, '2')
-			if (int(n[len(n)-3])!=0 and len(n)>=3):
-				x+=m1[int(n[len(n)-3])]+m3[len(n)-1]
-				#print(x,'3')
-			if (int(n[len(n)-4])!=0 and len(n)>=4):
-				x+=m1[int(n[len(n)-4])]+m3[len(n)]
-				#print(x,'4')
-				n=str(len(n)-1)
-			print(z, 'is', x, ' and')
-			n=str(x)
-			magic4(n)
+		while(int(n)!=0):
+			#ones and tens
+			if (len(n)%3==0):
+				if int(n[1:3])<20 and int(n[1:3])>0:
+					x+=int(m1[int(n[1:3])])
+					#print(x, "3_1")
+				if (int(n[1:3])>=20):
+					x+=int(m2[int(n[1])] +m1[int(n[2])])
+					#print(x, "3_2")
+				if int(n[0])!=0:
+					x+=m1[int(n[0])]+m3[len(n)]
+					#print(x,"3_3")
+				if(n[3:]!=''):
+					n=n[3:]
+				else:
+					n=str(x)
+					print(z, 'is', x, ' and')
+					break;
+			#thousands
+			if ((len(n)-1)%3==0):
+				if (int(n[2:4])>0) and (int(n[2:4])<20):
+					x+=int(m1[int(n[2:4])]+m3[len(n)-1]) +m3[len(n)-2]
+					#print(x, "4_1")
+				if (int(n[2:4])>=20):
+					x+=int(m2[int(n[2])] +m1[int(n[3])] +m3[len(n)-2])
+					#print(x, "4_2")
+				if int(n[1])!=0:
+					x+=m1[int(n[1])]+m3[len(n)-1]
+					#print(x,"4_3")
+				if int(n[0])!=0:
+					x+=m1[int(n[0])]+m3[len(n)]
+					#print(x, "4_4")
+				if(n[4:]!=''):
+					n=n[4:]
+				else:
+					n=str(x)
+					print(z, 'is', x, ' and')
+					break;
+			#hundreds
+			if((len(n)-2)%3==0):
+				if (int(n[3:5])>0) and (int(n[3:5])<20):
+					x+=int(m1[int(n[3:5])]+m3[len(n)-3])
+					#print(x, "5_1")
+				if (int(n[3:5])>=20):
+					x+=int(m2[int(n[3])] +m1[int(n[4])] +m3[len(n)-3])
+					#print(x, "5_2")
+				if int(n[2])!=0:
+					x+=m1[int(n[2])]+m3[len(n)-2]
+					#print(x,"5_3")
+				if (int(n[0:2])>0) and (int(n[0:2])<20):
+					x+=int(m1[int(n[0:2])]+m3[len(n)-1])
+					#print(x, "5_4")
+				if (int(n[0:2])>=20):
+					x+=int(m2[int(n[0])] +m1[int(n[1])] +m3[len(n)])
+					#print(x, "5_5")
+				if(n[5:]!=''):
+					n=n[5:]
+				else:
+					n=str(x)
+					print(z, 'is', x, 'and')
+					break;
+		magic4(n)
 								
 x='NULL'
 while(x!="exit"):		
